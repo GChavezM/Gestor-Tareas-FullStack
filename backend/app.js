@@ -6,6 +6,7 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/authRoutes');
+const taskRoutes = require('./routes/taskRoutes');
 
 const app = express();
 
@@ -23,5 +24,6 @@ app.use(cors(corsOptions));
 
 app.use('/api', indexRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/tasks', taskRoutes);
 
 module.exports = app;
