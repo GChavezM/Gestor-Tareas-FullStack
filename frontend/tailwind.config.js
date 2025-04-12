@@ -9,7 +9,7 @@ export default {
                     primary: 'var(--background-primary)',
                     secondary: 'var(--background-secondary)',
                 },
-                border: 'var(--border)',
+                border: 'var(--border-color)',
                 shadowbox: 'var(--card-shadow)',
                 status: {
                     pending: 'var(--status-pending)',
