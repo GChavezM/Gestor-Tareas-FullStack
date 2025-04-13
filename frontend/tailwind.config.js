@@ -33,6 +33,11 @@ export default {
                     progress: 'var(--status-progress)',
                     completed: 'var(--status-completed)',
                 },
+                error: {
+                    background: 'var(--error-background)',
+                    text: 'var(--error-text)',
+                    border: 'var(--error-border)',
+                },
             },
             gridTemplateColumns: {
                 list: 'repeat(auto-fill,minmax(320px,1fr))',
