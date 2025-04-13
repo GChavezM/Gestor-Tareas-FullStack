@@ -4,6 +4,7 @@
 
 :root {
     --primary-color: #3277a8;
+    --primary-color-hover: #26587e;
 
     --background-primary: #f8f9fa;
     --background-secondary: #ffffff;
@@ -12,9 +13,16 @@
     --border-color: #e9ecef;
     --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
+    --input-background: #f8f9fa;
+
     --status-pending: #ffd43b;
     --status-progress: #6c5ce7;
     --statuscompleted: #51cf66;
+
+    --accent-hover: #5f4ed1;
+    --error-bg: #fff5f5;
+    --error-text: #e53e3e;
+    --error-border: #feb2b2;
 }
 
 body {
