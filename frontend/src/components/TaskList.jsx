@@ -47,11 +47,20 @@ const TaskList = ({
     onDeleteTask = () => {},
     onChangeStatus = () => {},
 }) => {
+    const formatDate = (date) => {
+        let dateFormat = date.substring(0, 10).split('-');
+        dateFormat = dateFormat[1] + '-' + dateFormat[2] + '-' + dateFormat[0];
+        const dateObject = new Date(dateFormat);
+        const year = dateObject.getFullYear();
+        const month = String(dateObject.getMonth() + 1).padStart(2, '0');
+        const day = String(dateObject.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
     return (
-        <div className="grid-cols-list grid gap-6">
-            <h2 className="text-text-primary col-span-full mb-5 text-xl">
+        <div className="grid grid-cols-list gap-6">
+            <h2 className="col-span-full mb-5 text-xl text-text-primary">
                 <FontAwesomeIcon
-                    className="text-primary mr-2"
+                    className="mr-2 text-primary"
                     icon={faPenToSquare}
                 />{' '}
                 Tus tareas
@@ -68,7 +77,7 @@ const TaskList = ({
                                 <span
                                     className={`block h-4 w-4 border-l-4 ${borderClass}`}
                                 />
-                                <span className="text-text-secondary text-sm">
+                                <span className="text-sm text-text-secondary">
                                     {TASK_STATUS_LABELS[statusKey]}
                                 </span>
                             </div>
@@ -82,12 +91,12 @@ const TaskList = ({
                     <div className="flex flex-col">
                         <label
                             htmlFor="statusFilter"
-                            className="text-text-secondary text-sm">
+                            className="text-sm text-text-secondary">
                             Estado
                         </label>
                         <select
                             id="statusFilter"
-                            className="bg-background-secondary border-border focus:ring-primary rounded-md border p-2 text-sm focus:outline-none focus:ring-2"
+                            className="rounded-md border border-border bg-background-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                             value={statusFilter}
                             onChange={(e) =>
                                 onStatusFilterChange(e.target.value)
@@ -109,13 +118,13 @@ const TaskList = ({
                     <div className="flex flex-col">
                         <label
                             htmlFor="dateFilter"
-                            className="text-text-secondary text-sm">
+                            className="text-sm text-text-secondary">
                             Fecha
                         </label>
                         <input
                             type="date"
                             id="dateFilter"
-                            className="bg-background-secondary border-border focus:ring-primary rounded-md border p-2 text-sm focus:outline-none focus:ring-2"
+                            className="rounded-md border border-border bg-background-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                             value={dateFilter}
                             onChange={(e) => onDateFilterChange(e.target.value)}
                         />
@@ -123,14 +132,14 @@ const TaskList = ({
                     <div className="flex flex-1 flex-col">
                         <label
                             htmlFor="searchWords"
-                            className="text-text-secondary text-sm">
+                            className="text-sm text-text-secondary">
                             Buscar
                         </label>
                         <input
                             type="text"
                             id="searchWords"
                             placeholder="Buscar palabras..."
-                            className="bg-background-secondary border-border focus:ring-primary rounded-md border p-2 text-sm focus:outline-none focus:ring-2"
+                            className="rounded-md border border-border bg-background-secondary p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                             value={searchWords}
                             onChange={(e) =>
                                 onSearchWordsChange(e.target.value)
@@ -141,7 +150,7 @@ const TaskList = ({
             </div>
 
             {tasks.length === 0 ? (
-                <p className="text-text-secondary col-span-full my-10 text-center text-base">
+                <p className="col-span-full my-10 text-center text-base text-text-secondary">
                     No tienes tareas. Crea una nueva!
                 </p>
             ) : (
@@ -156,25 +165,20 @@ const TaskList = ({
                     return (
                         <div
                             key={task.id}
-                            className={`${taskBorderClass} bg-background-secondary shadow-shadow-card hover:shadow-shadow-card rounded-xl border-l-4 p-6 transition-all duration-200 ease-in-out hover:-translate-y-0.5`}>
+                            className={`${taskBorderClass} rounded-xl border-l-4 bg-background-secondary p-6 shadow-shadow-card transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:shadow-shadow-card`}>
                             <div className="mb-3 flex items-center gap-3">
-                                <h3 className="text-text-primary mb-3 text-lg">
+                                <h3 className="mb-3 text-lg text-text-primary">
                                     {task.title}
                                 </h3>
                             </div>
                             <p>{task.description}</p>
                             {task.deadline && (
-                                <p>
-                                    Fecha límite{' '}
-                                    {new Date(
-                                        task.deadline,
-                                    ).toLocaleDateString()}
-                                </p>
+                                <p>Fecha límite {formatDate(task.deadline)}</p>
                             )}
                             <div className="mt-5 flex gap-3">
                                 {transitionState && (
                                     <button
-                                        className={`${transitionClass} border-border text-text-primary bg-input-background flex-1 cursor-pointer rounded-md border p-2 px-3 text-sm transition-all duration-200 ease-in-out`}
+                                        className={`${transitionClass} flex-1 cursor-pointer rounded-md border border-border bg-input-background p-2 px-3 text-sm text-text-primary transition-all duration-200 ease-in-out`}
                                         onClick={() =>
                                             onChangeStatus(
                                                 task.id,
@@ -186,7 +190,7 @@ const TaskList = ({
                                 )}
                                 {task.status !== TASk_STATUS.COMPLETED && (
                                     <button
-                                        className="bg-primary text-background-secondary hover:bg-primary-hover cursor-pointer rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ease-in-out"
+                                        className="cursor-pointer rounded-md bg-primary px-4 py-2 text-sm font-medium text-background-secondary transition-all duration-200 ease-in-out hover:bg-primary-hover"
                                         onClick={() => onSelectedTask(task.id)}>
                                         <FontAwesomeIcon
                                             className="mr-2"
@@ -197,7 +201,7 @@ const TaskList = ({
                                 )}
                                 {task.status === TASk_STATUS.COMPLETED && (
                                     <button
-                                        className="bg-delete text-background-secondary hover:bg-delete-hover cursor-pointer rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ease-in-out"
+                                        className="cursor-pointer rounded-md bg-delete px-4 py-2 text-sm font-medium text-background-secondary transition-all duration-200 ease-in-out hover:bg-delete-hover"
                                         onClick={() => onDeleteTask(task.id)}>
                                         <FontAwesomeIcon
                                             className="mr-2"
