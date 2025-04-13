@@ -33,7 +33,7 @@ const Tasks = () => {
                                 statusFilter === TASk_STATUS_FILTER.ALL
                                     ? null
                                     : statusFilter,
-                            date,
+                            deadline: date,
                             search,
                         },
                     },
@@ -218,7 +218,7 @@ const Tasks = () => {
 
     return (
         <div className="mx-auto px-5 py-10">
-            <h1 className="text-text-primary mb-7 text-4xl">
+            <h1 className="mb-7 text-4xl text-text-primary">
                 Gestor de Tareas
             </h1>
             <TaskForm

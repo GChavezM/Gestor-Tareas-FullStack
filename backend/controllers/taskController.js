@@ -14,11 +14,14 @@ const isValidStatusTransition = (currentStatus, newStatus) => {
 
 exports.getTasks = async (req, res) => {
 	try {
-		const { status, search } = req.query;
+		const { status, search, deadline } = req.query;
 		const { user } = req;
 		let where = { user_id: user.id };
 		if (status) {
 			where.status = status;
+		}
+		if (deadline) {
+			where.deadline = deadline;
 		}
 		if (search) {
 			where = {
