@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('token', data.token);
 
             const userResponse = await axios.get(
-                process.env.REACT_APP_BACKEND_ENDPOINT + '/api/auth/me',
+                `${process.env.REACT_APP_BACKEND_ENDPOINT}/api/auth/me`,
                 {
                     headers: {
                         Authorization: `Bearer ${data.token}`,
@@ -46,14 +46,13 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (name, email, password) => {
         try {
-            const response = await fetch(
-                process.env.REACT_APP_BACKEND_ENDPOINT + '/api/auth/register',
+            const response = await axios.post(
+                `${process.env.REACT_APP_BACKEND_ENDPOINT}/api/auth/register`,
+                { name, email, password },
                 {
-                    method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ name, email, password }),
                 },
             );
 
