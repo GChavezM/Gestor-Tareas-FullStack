@@ -13,3 +13,9 @@ export const TASk_STATUS = {
     IN_PROGRESS: 'in_progress',
     COMPLETED: 'completed',
 };
+
+export const TASK_STATUS_LABELS = {
+    PENDING: 'Pendiente',
+    IN_PROGRESS: 'En Progreso',
+    COMPLETED: 'Completado',
+};

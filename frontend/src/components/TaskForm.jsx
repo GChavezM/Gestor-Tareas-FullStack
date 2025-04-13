@@ -12,12 +12,9 @@ const TaskForm = ({ taskData = null }) => {
 
     useEffect(() => {
         if (taskData) {
-            setFormData({
-                ...formData,
-                taskData,
-            });
+            setFormData(taskData);
         }
-    }, [formData, taskData]);
+    }, [taskData]);
 
     const handleInputChange = (e) => {
         setFormData({
