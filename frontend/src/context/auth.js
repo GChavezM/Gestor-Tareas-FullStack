@@ -33,8 +33,6 @@ export const AuthProvider = ({ children }) => {
                 },
             );
             const userData = await userResponse.data;
-            console.log(userData);
-            console.log(userData.user);
             setUser(userData.user);
             return true;
         } catch (error) {
@@ -46,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (name, email, password) => {
         try {
-            const response = await axios.post(
+            await axios.post(
                 `${process.env.REACT_APP_BACKEND_ENDPOINT}/api/auth/register`,
                 { name, email, password },
                 {
@@ -55,10 +53,6 @@ export const AuthProvider = ({ children }) => {
                     },
                 },
             );
-
-            if (!response.ok) {
-                throw new Error('Registration failed');
-            }
 
             return true;
         } catch (error) {
