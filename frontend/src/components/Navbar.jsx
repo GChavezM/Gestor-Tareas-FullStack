@@ -14,7 +14,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-background-secondary shadow-shadow-card flex items-center justify-between px-8 py-4">
+        <nav className="flex items-center justify-between bg-background-secondary px-8 py-4 shadow-shadow-card">
             <div className="flex items-center gap-4">
                 {token ? (
                     <NavLink className={navLinkStyles} to="/tasks">
@@ -29,11 +29,11 @@ const Navbar = () => {
             <div className="flex items-center gap-4">
                 {token && (
                     <>
-                        <span className="text-text-secondary text-sm">
+                        <span className="text-sm text-text-secondary">
                             Bienvenido {user?.name}
                         </span>
                         <button
-                            className="border-primary text-primary hover:bg-primary-hover hover:text-primary-hover cursor-pointer rounded-md border-2 bg-transparent px-4 py-2 text-sm font-medium transition-all duration-200 ease-in-out"
+                            className="cursor-pointer rounded-md border-2 border-primary bg-transparent px-4 py-2 text-sm font-medium text-primary transition-all duration-200 ease-in-out hover:bg-primary-hover hover:text-background-secondary"
                             onClick={handleLogout}>
                             Cerrar Sesion
                         </button>
