@@ -119,10 +119,10 @@ exports.updateTask = async (req, res) => {
 			});
 		}
 
-		if (!body?.deadline) {
+		if (!task.status && !body?.deadline) {
 			body.deadline = null;
 		}
-		if (!body?.description) {
+		if (!task.status && !body?.description) {
 			body.description = null;
 		}
 
