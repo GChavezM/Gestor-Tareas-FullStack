@@ -46,13 +46,17 @@ const TaskForm = ({
     };
 
     const formatDate = (date) => {
-        let dateFormat = date.substring(0, 10).split('-');
-        dateFormat = dateFormat[1] + '-' + dateFormat[2] + '-' + dateFormat[0];
-        const dateObject = new Date(dateFormat);
-        const year = dateObject.getFullYear();
-        const month = String(dateObject.getMonth() + 1).padStart(2, '0');
-        const day = String(dateObject.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
+        if (date) {
+            let dateFormat = date.substring(0, 10).split('-');
+            dateFormat =
+                dateFormat[1] + '-' + dateFormat[2] + '-' + dateFormat[0];
+            const dateObject = new Date(dateFormat);
+            const year = dateObject.getFullYear();
+            const month = String(dateObject.getMonth() + 1).padStart(2, '0');
+            const day = String(dateObject.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+        return date;
     };
 
     let isCreate = true;

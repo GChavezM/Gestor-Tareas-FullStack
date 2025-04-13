@@ -119,6 +119,13 @@ exports.updateTask = async (req, res) => {
 			});
 		}
 
+		if (!body?.deadline) {
+			body.deadline = null;
+		}
+		if (!body?.description) {
+			body.description = null;
+		}
+
 		await task.update(body);
 		return res.status(200).json({ message: 'Success', task });
 	} catch (error) {
