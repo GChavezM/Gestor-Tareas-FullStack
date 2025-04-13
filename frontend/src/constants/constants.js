@@ -14,6 +14,11 @@ export const TASk_STATUS = {
     COMPLETED: 'completed',
 };
 
+export const TASk_STATUS_FILTER = {
+    ...TASk_STATUS,
+    ALL: 'all',
+};
+
 export const TASK_STATUS_LABELS = {
     PENDING: 'Pendiente',
     IN_PROGRESS: 'En Progreso',
