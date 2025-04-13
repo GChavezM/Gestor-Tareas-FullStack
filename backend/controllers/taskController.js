@@ -110,6 +110,12 @@ exports.updateTask = async (req, res) => {
 			});
 		}
 
+		if (task.status === STATUS.COMPLETED) {
+			return res.status(400).json({
+				message: 'Cannot update task',
+			});
+		}
+
 		await task.update(body);
 		return res.status(200).json({ message: 'Success', task });
 	} catch (error) {
