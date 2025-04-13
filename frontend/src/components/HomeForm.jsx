@@ -26,17 +26,13 @@ const HomeForm = ({ mode, setAction }) => {
     };
 
     const handleSubmit = async () => {
-        console.log(formData);
         setError('');
         try {
-            console.log(mode);
             if (mode === HOME_FORM_TYPES.SIGNIN) {
-                console.log('login');
                 const success = await auth.login(
                     formData.email,
                     formData.password,
                 );
-                console.log(success);
                 if (success) {
                     navigate('/tasks');
                 } else {
@@ -51,7 +47,7 @@ const HomeForm = ({ mode, setAction }) => {
                 if (success) {
                     setAction(HOME_FORM_TYPES.SIGNIN);
                     setFormData(initialFormData);
-                    setError('Registration successful! Please login.');
+                    setError('Registro exitoso! Por favor, inicia sesión.');
                 } else {
                     setError('Registration failed');
                 }
