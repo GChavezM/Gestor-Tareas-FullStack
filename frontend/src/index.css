@@ -18,9 +18,11 @@
 
     --status-pending: #ffd43b;
     --status-progress: #6c5ce7;
-    --statuscompleted: #51cf66;
+    --status-completed: #51cf66;
 
-    --accent-hover: #5f4ed1;
+    --delete-color: #ff6b6b;
+    --delete-color-hover: #fa5252;
+
     --error-bg: #fff5f5;
     --error-text: #e53e3e;
     --error-border: #feb2b2;

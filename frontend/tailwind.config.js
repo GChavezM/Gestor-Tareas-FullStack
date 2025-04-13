@@ -8,6 +8,10 @@ export default {
                     DEFAULT: 'var(--primary-color)',
                     hover: 'var(--primary-color-hover)',
                 },
+                delete: {
+                    DEFAULT: 'var(--delete-color)',
+                    hover: 'var(--delete-color-hover)',
+                },
                 background: {
                     primary: 'var(--background-primary)',
                     secondary: 'var(--background-secondary)',
@@ -29,6 +33,9 @@ export default {
                     progress: 'var(--status-progress)',
                     completed: 'var(--status-completed)',
                 },
+            },
+            gridTemplateColumns: {
+                list: 'repeat(auto-fill,minmax(320px,1fr))',
             },
         },
     },
