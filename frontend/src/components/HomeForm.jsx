@@ -5,7 +5,7 @@ import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import { HOME_FORM_TYPES } from '../constants/constants';
 
-const HomeForm = (props) => {
+const HomeForm = ({ mode }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -21,11 +21,12 @@ const HomeForm = (props) => {
     };
 
     const handleSubmit = async () => {
+        console.log(formData);
         navigate('/tasks');
     };
     return (
         <div className="mt-11 flex flex-col gap-6">
-            {props.mode === HOME_FORM_TYPES.SIGNUP && (
+            {mode === HOME_FORM_TYPES.SIGNUP && (
                 <div className="w-120 h-15 bg-input-background border-border m-auto flex items-center rounded-lg border border-solid px-4 transition-all duration-200 ease-in-out">
                     <FontAwesomeIcon
                         className="text-text-secondary w-6 text-lg"
@@ -81,7 +82,8 @@ const HomeForm = (props) => {
 };
 
 HomeForm.propTypes = {
-    mode: PropTypes.string.isRequired,
+    mode: PropTypes.oneOf([HOME_FORM_TYPES.SIGNIN, HOME_FORM_TYPES.SIGNUP])
+        .isRequired,
 };
 
 export default HomeForm;

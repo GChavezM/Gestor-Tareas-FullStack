@@ -20,7 +20,10 @@ export default {
                 input: {
                     background: 'var(--input-background)',
                 },
-                shadowbox: 'var(--card-shadow)',
+                shadow: {
+                    card: 'var(--card-shadow)',
+                    box: 'var(--box-shadow)',
+                },
                 status: {
                     pending: 'var(--status-pending)',
                     progress: 'var(--status-progress)',
